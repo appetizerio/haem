@@ -32,6 +32,11 @@ def create(avd, target, abi):
     subprocess.call([AVD_MANAGER, 'create', 'avd', '--name', avd, '--package', systemimg])
 
 @cli.command()
+@click.argument('avd')
+def delete(avd):
+    subprocess.call([AVD_MANAGER, 'delete', 'avd', '--name', avd])
+
+@cli.command()
 def list():
     subprocess.call([AVD_MANAGER, 'list', 'avd'])
 
@@ -47,7 +52,7 @@ def running():
 @cli.command()
 @click.argument('port')
 def stop(port):
-    with open('~/.emulator_console_auth_token', 'r') as f:
+    with open(os.path.join(os.path.expanduser('~'), '.emulator_console_auth_token'), 'r') as f:
         token = f.read().rstrip()
     telnet_cmd = 'auth %s\nkill\n' % (token, )
     subprocess.call('echo "%s" | telnet 127.0.0.1 %d' % (telnet_cmd, port, ), shell=True)
