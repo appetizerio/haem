@@ -55,7 +55,7 @@ def stop(port):
     with open(os.path.join(os.path.expanduser('~'), '.emulator_console_auth_token'), 'r') as f:
         token = f.read().rstrip()
     telnet_cmd = 'auth %s\nkill\n' % (token, )
-    subprocess.call('echo "%s" | telnet 127.0.0.1 %d' % (telnet_cmd, port, ), shell=True)
+    subprocess.call('echo "%s" | telnet 127.0.0.1 %s' % (telnet_cmd, port, ), shell=True)
 
 @cli.command()
 def check():
