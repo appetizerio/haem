@@ -3,7 +3,7 @@ import sys
 import subprocess
 import os
 
-ANDROID_SDK = '/Users/kenmark/Library/Android/sdk/'
+ANDROID_SDK = '/opt/android/'
 SDK_MANAGER = os.path.join(ANDROID_SDK, 'tools', 'bin', 'sdkmanager')
 AVD_MANAGER = os.path.join(ANDROID_SDK, 'tools', 'bin', 'avdmanager')
 EMULATOR = os.path.join(ANDROID_SDK, 'tools', 'emulator')
