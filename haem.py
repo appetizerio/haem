@@ -43,7 +43,9 @@ def list():
 @cli.command()
 @click.argument('avd')
 def start(avd):
-    subprocess.call([EMULATOR, '-avd', avd, '-no-audio', '-no-window'])
+    print("Execute the following command with nohup")
+    cmd = "%s -avd %s -no-audio -no-window" % (EMULATOR, avd)
+    print(cmd)
 
 @cli.command()
 def running():
